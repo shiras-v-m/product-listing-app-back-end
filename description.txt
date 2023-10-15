@@ -1,0 +1,39 @@
+how to update item ( want to update array by append old value and new value )
+
+const filter = { _id: ObjectId('652bab117bc5234d63390b95') };
+    const newProduct = {
+      name: "new",
+      description: "sdfff",
+      price: 234234
+    };
+
+    const updateResult = await collection.updateOne(filter, {
+      $push: {
+        products: newProduct
+      }
+    });
+
+    console.log(`Matched ${updateResult.matchedCount} document(s) and modified ${updateResult.modifiedCount} document(s)`);
+
+  } finally {
+    await client.close();
+  }
+
+
+-----------------------------------------------------------------
+how to  update array with new value if it not already exist in mongodb atlas
+
+const filter = { _id: ObjectId('652bab117bc5234d63390b95') };
+    const newProduct = {
+      name: "new",
+      description: "sdfff",
+      price: 234234
+    };
+
+    const updateResult = await collection.updateOne(filter, {
+      $addToSet: {
+        products: newProduct
+      }
+    });
+
+
